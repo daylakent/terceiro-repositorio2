@@ -1,8 +1,14 @@
 const numeroSenha = document.querySelector('.parametro-senha__texto');
+const campoSenha = document.querySelector('#campo-senha');
+const checkbox = document.querySelectorAll('.checkbox');
+const forcaSenha = document.querySelector('.forca');
+const botoes = document.querySelectorAll('.parametro-senha__botao');
+const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const letrasMinusculas = 'abcdefghijklmnopqrstuvwxyz';
+const numeros = '0123456789';
+const simbolos = '!@%*?';
 let tamanhoSenha = 12;
 numeroSenha.textContent = tamanhoSenha;
-
-const botoes = document.querySelectorAll('.parametro-senha__botao');
 
 botoes[0].onclick = diminuiTamanho;
 botoes[1].onclick = aumentaTamanho;
@@ -23,13 +29,6 @@ function aumentaTamanho(){
     geraSenha();
 }
 
-const campoSenha = document.querySelector('#campo-senha');
-const checkbox = document.querySelectorAll('.checkbox');
-
-const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const letrasMinusculas = 'abcdefghijklmnopqrstuvwxyz';
-const numeros = '0123456789';
-const simbolos = '!@%*?';
 
 geraSenha();
 
@@ -57,3 +56,11 @@ function geraSenha() {
     campoSenha.value = senha; 
 }
 
+function classificaSenha() {
+    forcaSenha.classList.remove('fraca', 'media', 'forte');
+    if (tamanhoSenha>11){
+        forcaSenha.classList.add('forte');
+    } else if (tamanhoSenha>5 && tamanhoSenha<12) {
+        forcaSenha.classList.add('media');
+    }else if (tamanhoSenha)
+}
